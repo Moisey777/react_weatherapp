@@ -12,7 +12,7 @@ class App extends React.Component {
 		temp: undefined,
 		city: undefined,
 		country: undefined,
-		sunrise: undefined,
+		pressure: undefined,
 		sunset: undefined,
 		error: undefined
 
@@ -23,10 +23,9 @@ class App extends React.Component {
 	gettingWeather = async(e) => {
 		e.preventDefault();
 		const city = e.target.elements.city.value;
-		const api_url = await fetch(`api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
-		const data = await api_url.json();
+		
 
-		if (city) 
+		if (city) {
 
 		const api_url = await fetch(`api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
 		const data = await api_url.json();
@@ -43,7 +42,7 @@ class App extends React.Component {
 			temp: data.main.temp,
 			city: data.name,
 			country: data.sys.country,
-			sunrise: data.sys.sunrise,
+			pressure: data.main.pressure,
 			sunset: sunset_date,
 			error: "" 
 
@@ -67,7 +66,7 @@ class App extends React.Component {
     temp = {this.state.temp}
     city = {this.state.city}
     country = {this.state.country}
-    sunrise = {this.state.sunrise}
+    pressure = {this.state.pressure}
     sunset = {this.state.sunset}
     error = {this.state.error}
 
